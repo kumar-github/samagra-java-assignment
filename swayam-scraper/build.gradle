@@ -1,0 +1,63 @@
+plugins {
+    id 'org.springframework.boot' version '2.5.4'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'java-library'
+}
+
+apply from: 'versions.gradle'
+
+group = 'tech.badprogrammer'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //
+    // spring boot web stuff
+    //
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    //
+    // spring boot data jpa stuff
+    //
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    //
+    // spring boot actuator stuff
+    //
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    //
+    // h2 in-mem db stuff
+    //
+    runtimeOnly 'com.h2database:h2'
+    //
+    // spring boot test stuff
+    //
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    //
+    // to have swagger and swagger-ui
+    //
+    api group: 'io.springfox', name: 'springfox-swagger-ui', version: "$swagger_version"
+    api group: 'io.springfox', name: 'springfox-swagger2', version: "$swagger_version"
+    //
+    // to have model mapper
+    //
+    api group: 'org.modelmapper', name: 'modelmapper', version: "$model_mapper_version"
+    api group: 'org.modelmapper.extensions', name: 'modelmapper-spring', version: "$model_mapper_version"
+    //
+    // to have lombok
+    //
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: "$lombok_version"
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: "$lombok_version"
+
+    testCompileOnly group: 'org.projectlombok', name: 'lombok', version: "$lombok_version"
+    testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: "$lombok_version"
+
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: "$apache_commons_lang3_version"
+}
+
+test {
+    useJUnitPlatform()
+}

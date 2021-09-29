@@ -1,0 +1,6 @@
+ext {
+    swagger_version      = '2.9.2'
+    model_mapper_version = '2.4.2'
+    lombok_version       = '1.18.20'
+    apache_commons_lang3_version = '3.12.0'
+}
